@@ -8,16 +8,6 @@
     <meta charset="UTF-8">
     <meta name="author" content="João Felipe Gueiros">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <style>
-        /* Basic styling for readability if external CSS fails */
-        body { font-family: sans-serif; line-height: 1.6; max-width: 800px; margin: 40px auto; padding: 20px; color: #333; }
-        header, footer { text-align: center; margin-bottom: 20px; }
-        .navbar { list-style: none; padding: 0; display: flex; justify-content: center; gap: 20px; }
-        h1, h2 { border-bottom: 1px solid #ccc; padding-bottom: 5px; margin-top: 40px; }
-        p { margin-bottom: 20px; }
-        code { background-color: #f4f4f4; padding: 2px 5px; border-radius: 4px; font-family: monospace; }
-        ol { padding-left: 20px; }
-    </style>
 </head>
 <body>
 <header class="page-header">
@@ -26,80 +16,72 @@
     </div>
     <nav>
         <ul class="navbar">
-            <li><a href="/"><span>About</span></a></li>
-            <li><a href="/projects/"><span>Projects</span></a></li>
-            <li><a href="/resume/"><span>Resume</span></a></li>
+            <li class="">
+                <a href="/">
+                    <span>About</span>
+                </a>
+            </li>
+            <li class="">
+                <a href="/projects/">
+                    <span>Projects</span>
+                </a>
+            </li>
+            <li class="">
+                <a href="/resume/">
+                    <span>Resume</span>
+                </a>
+            </li>
         </ul>
     </nav>
 </header>
+
 <div id="content">
     <main>
-        <article>
-            <h1 class="page-title blog">V-Shield</h1>
-            <p class="blog-post-info">Posted: <time>2024-09-15</time></p>
-            <div class="blog-post-content">
-                <p>A Resilient V-Formation Demonstrator for Multi-Agent Systems</p>
-                <p style="text-align: center;">
-                    <a href="/images/projects/project-one/Network_picture.png">
-                        <img src="https://i.imgur.com/gKsd8Xp.png" alt="Communication graph of the drone swarm" style="width: 400px; border-radius: 8px;">
-                    </a>
-                </p>
-                
-                <!-- REVISED CONTENT STARTS HERE -->
+        <h2 id="introduction">Introduction</h2>
+        <p>V-Shield is a Python/Matplotlib/NetworkX demo of a small UAV swarm maintaining a V-formation while under attack by two <strong>adversarial agents</strong>. Inspired by the recent work “Resilience for Distributed Consensus with Constraints” by X. Wang, S. Mou & S. Sundaram, this demo focuses on the <strong>unconstrained consensus</strong> problem. It uses a Linear Program (LP) to compute a resilient convex combination of neighbor positions, which allows the honest drones to automatically ignore the malicious inputs and converge to the desired formation.</p>
 
-                <h2 id="introduction">Introduction</h2>
-                <p>
-                    V-Shield is a Python/Matplotlib/NetworkX demo of a small UAV swarm maintaining a V-formation while under attack by two <strong>adversarial agents</strong>. Inspired by the recent work “Resilience for Distributed Consensus with Constraints” by X. Wang, S. Mou & S. Sundaram, this demo focuses on the <strong>unconstrained consensus</strong> problem. It uses a Linear Program (LP) to compute a resilient convex combination of neighbor positions, which allows the honest drones to automatically ignore the malicious inputs and converge to the desired formation.
-                </p>
-    
-                <h2 id="key-ingredients">Key Ingredients</h2>
-                <p>
-                    <strong>Robust Network Design:</strong> We construct a communication graph with a <strong>fully-connected core</strong> of 9 agents. This structure is exceptionally robust and satisfies the sufficient conditions for network redundancy laid out in Corollary 1 of the paper. This ensures the communication graph remains connected even after the filtering algorithm discards information from the adversarial agents.
-                </p>
-                <p>
-                    <strong>Simplified Resilient Combination:</strong> To achieve a performant simulation suitable for animation, this demo implements a simplified, yet effective, version of the paper's core filtering concept. At each time-step, each honest drone:
-                    <ol>
-                        <li>Gathers a single, canonical subset of its <code>σ-1</code> nearest neighbors' positions.</li>
-                        <li>Constructs smaller groups by removing <code>κ</code> agents from this subset in every possible way.</li>
-                        <li>Solves a small LP to find a "safe" point <code>φ</code> that lies within the intersection of the convex hulls of these smaller groups.</li>
-                        <li>Uses this single point <code>φ</code> as its new target position (relative to its formation offset). This process effectively excludes influence from the <code>κ</code> adversarial drones.</li>
-                    </ol>
-                </p>
-    
-                <h2 id="convergence-properties">Convergence Properties</h2>
-                <p>
-                    The full algorithm in the paper, which averages the results from thousands of subsets, guarantees an exponential rate of convergence. While this simplified implementation forgoes that crucial averaging step (and thus lacks the same theoretical guarantee), it empirically demonstrates that the core filtering mechanism is powerful enough to drive the honest drones to a stable consensus on the V-shape, successfully rejecting the persistent pull of the adversaries.
-                </p>
-    
-                <p style="text-align: center;">
-                    <a href="/images/projects/project-one/mean_error_plot.png">
-                        <img src="https://i.imgur.com/w9N3gqY.png" alt="Mean error plot showing LP filter outperforming Plain average" style="width: 400px; border-radius: 8px;">
-                    </a>
-                </p>
-    
-                <h2 id="visualization">Visualization</h2>
-                <p>
-                    We animate the swarm flying over a grass-green background, drawing each drone as a PNG icon. A top-left info box displays the true positions of the adversarial agents as they attempt to disrupt the formation.
-                </p>
-    
-                <video width="100%" controls style="border-radius: 8px; margin-top: 20px; margin-bottom: 20px;">
-                    <source src="/images/projects/project-one/drone_simulation.mp4" type="video/mp4">
-                    Your browser does not support the video tag.
-                </video>
-    
-                <h2 id="takeaway">Takeaway</h2>
-                <p>
-                    V-Shield demonstrates the core filtering concept from the paper in a practical setting. Using only local information and a quick LP solve at each step—without knowing which specific agents are malicious—the swarm effectively safeguards its consensus-based formation control against adversarial attacks in an unconstrained environment. It highlights the power of the resilient convex combination method while making a clear trade-off between algorithmic completeness and computational feasibility.
-                </p>
-                
-                <!-- REVISED CONTENT ENDS HERE -->
+        <h2 id="key-ingredients">Key Ingredients</h2>
+        <p><strong>Robust Network Design:</strong> We construct a communication graph with a fully-connected core of 9 agents. This structure is exceptionally robust and satisfies the sufficient conditions for network redundancy laid out in Corollary 1 of the paper. This ensures the communication graph remains connected even after the filtering algorithm discards information from the adversarial agents.</p>
 
-            </div>
-        </article>
+        <p><strong>Simplified Resilient Combination:</strong> To achieve a performant simulation suitable for animation, this demo implements a simplified, yet effective, version of the paper's core filtering concept. At each time-step, each honest drone:</p>
+        <ul>
+            <li>Gathers a single, canonical subset of its σ-1 nearest neighbors' positions.</li>
+            <li>Constructs smaller groups by removing κ agents from this subset in every possible way.</li>
+            <li>Solves a small LP to find a "safe" point φ that lies within the intersection of the convex hulls of these smaller groups.</li>
+            <li>Uses this single point φ as its new target position (relative to its formation offset). This process effectively excludes influence from the κ adversarial drones.</li>
+        </ul>
+
+        <h2 id="convergence-properties">Convergence Properties</h2>
+        <p>The full algorithm in the paper, which averages the results from thousands of subsets, guarantees an exponential rate of convergence. While this simplified implementation forgoes that crucial averaging step (and thus lacks the same theoretical guarantee), it empirically demonstrates that the core filtering mechanism is powerful enough to drive the honest drones to a stable consensus on the V-shape, successfully rejecting the persistent pull of the adversaries.</p>
+
+        <h2 id="visualization">Visualization</h2>
+        <p>We animate the swarm flying over a grass-green background, drawing each drone as a PNG icon. A top-left info box displays the true positions of the adversarial agents as they attempt to disrupt the formation.</p>
+
+        <p style="text-align: center;">
+            <a href="/images/projects/project-one/Network_picture.png">
+                <img src="/images/projects/project-one/Network_picture.png" alt="Network picture" style="width: 400px; border-radius: 8px;">
+            </a>
+        </p>
+
+        <video width="100%" controls style="border-radius: 8px; margin-top: 20px; margin-bottom: 20px;">
+            <source src="/images/projects/project-one/drone_simulation.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+
+        <p style="text-align: center;">
+            <a href="/images/projects/project-one/mean_error_plot.png">
+                <img src="/images/projects/project-one/mean_error_plot.png" alt="Mean error plot" style="width: 400px; border-radius: 8px;">
+            </a>
+        </p>
+
+        <h2 id="takeaway">Takeaway</h2>
+        <p>V-Shield demonstrates the core filtering concept from the paper in a practical setting. Using only local information and a quick LP solve at each step, without knowing which specific agents are malicious, the swarm effectively safeguards its consensus-based formation control against adversarial attacks in an unconstrained environment. It highlights the power of the resilient convex combination method while making a clear trade-off between algorithmic completeness and computational feasibility.</p>
     </main>
 </div>
+
 <footer>
     <span></span>
 </footer>
+
 </body>
 </html>
