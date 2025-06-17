@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Joao Felipe Gueiros - V-Shield </title>
+    <link rel="stylesheet" type="text/css" href="/css/fonts.css">
+    <link rel="stylesheet" type="text/css" href="/css/fontawesome.css">
+    
+    
+    <link rel="stylesheet" type="text/css" href="/css/styles.min.5b48ae43c81251d16e18d75ee402218b775affc199696ed678d34ea595657307.css">
+    
+    
+    <meta charset="UTF-8">
+    <meta name="author" content="João Felipe Gueiros">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+<body>
+<header class="page-header">
+    <div class="myname"> 
+        <h2><a href="https://jfgueiros.github.io/">João Felipe Gueiros</a></h2> 
+    </div>
+    <nav>
+        <ul class="navbar">
+            <li class="">
+                <a href="/">
+                    <span>About</span>
+                </a>
+            </li>
+            <li class="">
+                <a href="/projects/">
+                    <span>Projects</span>
+                </a>
+            </li>
+            <li class="">
+                <a href="/resume/">
+                    <span>Resume</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<div id="content">
+    <main>
+        <article>
+            
+            <h1 class="page-title blog">V-Shield</h1>
+            
+                <p class="blog-post-info">Posted: <time>0001-01-01</time>
+                
+
+
+</p>
+
+                <div class="blog-post-content">
+                <p>A Byzantine-Resilient V-Formation Demonstrator</p>
+<p style="text-align: center;">
+  <a href="/images/projects/project-one/Network_picture.png">
+    <img src="/images/projects/project-one/Network_picture.png" alt="Network picture" style="width: 400px; border-radius: 8px;">
+  </a>
+</p>
+<h2 id="introduction">Introduction</h2>
+<p>V-Shield is a Python/Matplotlib/NetworkX demo of a small UAV swarm flying in V-formation while under attack by “Byzantine” agents. Inspired by the recent work “Resilience for Distributed Consensus with Constraints” by X. Wang, S. Mou &amp; S. Sundaram, we solve a LP to compute a (γ, α)-resilient convex combination of its neighbors’ positions, automatically ignoring up to κ malicious inputs, yet still guarantees that the flock converges rapidly to and maintains the desired V-shape.</p>
+<h2 id="key-ingredients">Key ingredients</h2>
+<p>Robust network design
+We pick a communication graph satisfying the paper’s r-robustness conditions (enough disjoint in-neighbor redundancy) so that even if each drone loses information from κ corrupt neighbors, the remaining honest links still span a rooted tree.</p>
+<p>Resilient convex combinations
+At each time-step each honest drone</p>
+<p>Gathers its σ = n κ + 2 candidate next-step “virtual” positions (its own plus its σ–1 nearest neighbors).</p>
+<p>Builds all C(σ–1, σ–κ–1) subsets of size σ–κ, and solves a small LP that finds one point φ in the intersection of their convex hulls (plus its own convex hull).</p>
+<p>Uses φ as its new formation-offset, thereby excluding any influence from up to κ malicious drones.</p>
+<h2 id="exponential-convergence">Exponential convergence</h2>
+<p>By the paper’s theorems (and its constraint-redundancy corollary), this LP-filtering update provably drives the honest drones’ positions to exact consensus on the V-shape at an exponential rate, even though the Byzantines may broadcast arbitrary positions.</p>
+<p style="text-align: center;">
+  <a href="/images/projects/project-one/mean_error_plot.png">
+    <img src="/images/projects/project-one/mean_error_plot.png" alt="Network picture" style="width: 400px; border-radius: 8px;">
+  </a>
+</p>
+<h2 id="visualization">Visualization</h2>
+<p>We animate the swarm flying over a grass-green background, drawing each drone as a PNG icon, plus a little top-left info box showing the corrupt agents’ true positions.</p>
+<video width="100%" controls style="border-radius: 8px; margin-top: 20px; margin-bottom: 20px;">
+  <source src="/images/projects/project-one/drone_simulation.mp4" type="video/mp4">
+  Your browser does not support the video tag.
+</video>
+<h2 id="takeaway">Takeaway</h2>
+<p>With only local information and a quick LP at each step, no global knowledge of the network or which agents are bad, V-Shield implements the core ideas of the paper and demonstrates a practical, efficient way to safeguard consensus-based formation control against the most powerful (Byzantine) attacks.</p>
+                </div>
+                
+            
+        </article>
+    </main>
+
+        </div><footer>
+    <span></span>
+</footer>
+</body>
+</html>

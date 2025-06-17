@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Joao Felipe Gueiros - Sticky Fingers - Robotic Gripper for Shape Recognition </title>
+    <link rel="stylesheet" type="text/css" href="/css/fonts.css">
+    <link rel="stylesheet" type="text/css" href="/css/fontawesome.css">
+    
+    
+    <link rel="stylesheet" type="text/css" href="/css/styles.min.5b48ae43c81251d16e18d75ee402218b775affc199696ed678d34ea595657307.css">
+    
+    
+    <meta charset="UTF-8">
+    <meta name="author" content="João Felipe Gueiros">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+<body>
+<header class="page-header">
+    <div class="myname"> 
+        <h2><a href="https://jfgueiros.github.io/">João Felipe Gueiros</a></h2> 
+    </div>
+    <nav>
+        <ul class="navbar">
+            <li class="">
+                <a href="/">
+                    <span>About</span>
+                </a>
+            </li>
+            <li class="">
+                <a href="/projects/">
+                    <span>Projects</span>
+                </a>
+            </li>
+            <li class="">
+                <a href="/resume/">
+                    <span>Resume</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<div id="content">
+    <main>
+        <article>
+            
+            <h1 class="page-title blog">Sticky Fingers - Robotic Gripper for Shape Recognition</h1>
+            
+                <p class="blog-post-info">Posted: <time>0001-01-01</time>
+                
+
+
+</p>
+
+                <div class="blog-post-content">
+                <p>A sensor-equipped robotic gripper designed for precise shape recognition and manipulation.</p>
+<div style="text-align: center; margin-top: 20px; margin-bottom: 20px;">
+  <video width="70%" controls style="border-radius: 8px;">
+    <source src="/images/projects/project-three/gripper_rolling_edited.mp4" type="video/mp4">
+    Your browser does not support the video tag.
+  </video>
+</div>
+<h2 id="introduction">Introduction</h2>
+<p>Our robotic gripper utilizes a dynamic rack-and-pinion mechanism inspired by state-of-the-art designs to control finger spacing dynamically. This allows effective gripping, rolling, and shape recognition of objects like spheres and cubes through extensive sensor data collection.</p>
+<h2 id="design-and-fabrication">Design and Fabrication</h2>
+<ul>
+<li><strong>Lightweight Modular Fingers</strong>: Independently 3D-printed fingers for easy customization and iteration.</li>
+<li><strong>High-Friction Surfaces</strong>: Applied anti-slip material to ensure secure grasping on the finger without the sensors.</li>
+<li><strong>Rack-and-Pinion Mechanism</strong>: Allows precise and parallel adjustment of the finger distance (Eventhough our gripper has this mechanism we didn&rsquo;t have the time to test it with it, but it would certainly improve the grasping of more complex objects).</li>
+</ul>
+<div style="text-align: center;">
+  <a href="/images/projects/project-three/Gripper_picture.png">
+    <img src="/images/projects/project-three/Gripper_picture.png" alt="Robotic gripper design" style="width: 400px; border-radius: 8px;">
+  </a>
+</div>
+<h2 id="data-acquisition-and-processing">Data Acquisition and Processing</h2>
+<p>Sensor data from three force-sensing resistors (FSRs) was systematically collected during controlled object-rolling experiments:</p>
+<ul>
+<li><strong>Timestamped Voltage Data</strong>: Captured detailed temporal force data.</li>
+<li><strong>Data Parsing and Transformation</strong>: Structured raw readings into a consistent format for neural networks.</li>
+<li><strong>Feature Engineering</strong>: Calculated the time interval (<code>delta_t</code>) between readings to capture rolling dynamics.</li>
+<li><strong>Automated Batch Processing</strong>: Created a scalable pipeline converting raw data to structured <code>.npy</code> files for machine learning.</li>
+</ul>
+<div style="display: flex; justify-content: center; gap: 0px;">
+  <a href="/images/projects/project-three/ball_rolling_graph.png">
+    <img src="/images/projects/project-three/ball_rolling_graph.png" alt="Ball Rolling Graph" style="width: 105%; border-radius: 0px;">
+  </a>
+  <a href="/images/projects/project-three/square_rolling_graph.png">
+    <img src="/images/projects/project-three/square_rolling_graph.png" alt="Square Rolling Graph" style="width: 105%; border-radius: 0px;">
+  </a>
+</div>
+<h2 id="machine-learning-implementation">Machine Learning Implementation</h2>
+<p>We used a Long Short-Term Memory (LSTM) neural network for classifying the rolled objects:</p>
+<ul>
+<li>
+<p><strong>Network Architecture</strong>:</p>
+<ul>
+<li>Two-layer LSTM with 16 hidden units each, effectively capturing temporal dependencies.</li>
+<li>Dense layers and dropout regularization to enhance model performance.</li>
+<li>Softmax output for classifying objects into spheres or cubes.</li>
+</ul>
+</li>
+<li>
+<p><strong>Training and Validation</strong>:</p>
+<ul>
+<li>Data split into training (30%) and testing (70%) sets.</li>
+<li>Class balancing through computed weights.</li>
+<li>Early stopping to prevent overfitting, optimized via the Adam optimizer.</li>
+</ul>
+</li>
+</ul>
+<h2 id="results">Results</h2>
+<ul>
+<li><strong>Confusion Matrix</strong>:
+Confusion matrix with 94% percent on categorizing spheres and 86% on squares</li>
+<li><strong>Training and Testing Loss</strong>:
+We obtained a decreasing training and testing loss as the epoch increased</li>
+</ul>
+<div style="display: flex; justify-content: center; gap: 10px;">
+  <a href="/images/projects/project-three/confusion_matrix.png">
+    <img src="/images/projects/project-three/confusion_matrix.png" alt="Confusion Matrix" style="width: 90%; border-radius: 8px;">
+  </a>
+  <a href="/images/projects/project-three/losses.png">
+    <img src="/images/projects/project-three/losses.png" alt="Training Losses" style="width: 100%; border-radius: 8px;">
+  </a>
+</div>
+<h2 id="key-takeaways">Key Takeaways</h2>
+<p>Our project showcases an efficient, modular approach to robotic gripper design capable of high-accuracy shape recognition through sensor-driven data acquisition and deep learning methodologies.</p>
+                </div>
+                
+            
+        </article>
+    </main>
+
+        </div><footer>
+    <span></span>
+</footer>
+</body>
+</html>

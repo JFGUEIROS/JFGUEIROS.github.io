@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+    <channel>
+        <title>Joao Felipe Gueiros</title>
+        <link>https://jfgueiros.github.io/projects/</link>
+        <description>Latest blog posts from Joao Felipe Gueiros</description>
+
+        
+        <language>en-us</language>
+        
+
+        
+
+        
+
+        
+
+        
+
+        
+        <atom:link href="https://jfgueiros.github.io/projects/index.xml" rel="self" type="application/rss+xml" />
+        
+
+        
+            
+        <item>
+          <title>Deep Learning vs. Black-Scholes: Option Pricing Perfomance on Brazilian Petrobras Stocks</title>
+          <link>https://jfgueiros.github.io/projects/project-two/</link>
+          <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+          
+          <guid>https://jfgueiros.github.io/projects/project-two/</guid>
+          <description><p>A deep learning model capable of beating black-scholes</p>
+<!-- This container will display the images side-by-side and centered -->
+<div style="display: flex; justify-content: center; align-items: center; gap: 20px; flex-wrap: wrap;">
+  <!-- First Image -->
+  <a href="/images/projects/project-two/bs_formula.png">
+    <img src="/images/projects/project-two/bs_formula.png" alt="Black-Scholes Formula" style="width: 400px; border-radius: 8px;">
+  </a>
+  <!-- Second Image -->
+  <a href="/images/projects/project-two/Petrobras_horizontal_logo.png">
+    <img src="/images/projects/project-two/Petrobras_horizontal_logo.png" alt="Petrobras Logo" style="width: 400px; border-radius: 8px;">
+  </a>
+</div></description>
+        </item>
+            
+        <item>
+          <title>V-Shield</title>
+          <link>https://jfgueiros.github.io/projects/project-one/</link>
+          <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+          
+          <guid>https://jfgueiros.github.io/projects/project-one/</guid>
+          <description>A Byzantine-Resilient V-Formation Demonstrator</p>
+<p style="text-align: center;">
+  <a href="/images/projects/project-one/Network_picture.png">
+    <img src="/images/projects/project-one/Network_picture.png" alt="Network picture" style="width: 400px; border-radius: 8px;">
+  </a></description>
+        </item>
+            
+        <item>
+          <title>Sticky Fingers - Robotic Gripper for Shape Recognition</title>
+          <link>https://jfgueiros.github.io/projects/project-three/</link>
+          <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+          
+          <guid>https://jfgueiros.github.io/projects/project-three/</guid>
+          <description><p>A sensor-equipped robotic gripper designed for precise shape recognition and manipulation.</p>
+<div style="text-align: center; margin-top: 20px; margin-bottom: 20px;">
+  <video width="70%" controls style="border-radius: 8px;">
+    <source src="/images/projects/project-three/gripper_rolling_edited.mp4" type="video/mp4">
+    Your browser does not support the video tag.
+  </video>
+</div></description>
+        </item>
+            
+        
+    </channel>
+</rss>

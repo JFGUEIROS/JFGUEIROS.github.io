@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Joao Felipe Gueiros - Deep Learning vs. Black-Scholes: Option Pricing Perfomance on Brazilian Petrobras Stocks </title>
+    <link rel="stylesheet" type="text/css" href="/css/fonts.css">
+    <link rel="stylesheet" type="text/css" href="/css/fontawesome.css">
+    
+    
+    <link rel="stylesheet" type="text/css" href="/css/styles.min.5b48ae43c81251d16e18d75ee402218b775affc199696ed678d34ea595657307.css">
+    
+    
+    <meta charset="UTF-8">
+    <meta name="author" content="João Felipe Gueiros">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+<body>
+<header class="page-header">
+    <div class="myname"> 
+        <h2><a href="https://jfgueiros.github.io/">João Felipe Gueiros</a></h2> 
+    </div>
+    <nav>
+        <ul class="navbar">
+            <li class="">
+                <a href="/">
+                    <span>About</span>
+                </a>
+            </li>
+            <li class="">
+                <a href="/projects/">
+                    <span>Projects</span>
+                </a>
+            </li>
+            <li class="">
+                <a href="/resume/">
+                    <span>Resume</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<div id="content">
+    <main>
+        <article>
+            
+            <h1 class="page-title blog">Deep Learning vs. Black-Scholes: Option Pricing Perfomance on Brazilian Petrobras Stocks</h1>
+            
+                <p class="blog-post-info">Posted: <time>0001-01-01</time>
+                
+
+
+</p>
+
+                <div class="blog-post-content">
+                <p>A deep learning model capable of beating black-scholes</p>
+<!-- This container will display the images side-by-side and centered -->
+<div style="display: flex; justify-content: center; align-items: center; gap: 20px; flex-wrap: wrap;">
+  <!-- First Image -->
+  <a href="/images/projects/project-two/bs_formula.png">
+    <img src="/images/projects/project-two/bs_formula.png" alt="Black-Scholes Formula" style="width: 400px; border-radius: 8px;">
+  </a>
+  <!-- Second Image -->
+  <a href="/images/projects/project-two/Petrobras_horizontal_logo.png">
+    <img src="/images/projects/project-two/Petrobras_horizontal_logo.png" alt="Petrobras Logo" style="width: 400px; border-radius: 8px;">
+  </a>
+</div>
+<h2 id="introduction">Introduction</h2>
+<p>This study investigated the application of deep residual networks for option pricing, specifically focusing on Petrobras
+option contracts in the Brazilian market. Traditional models, such as the Black-Scholes equation, provide a theoretical
+framework for pricing financial derivatives but often fail to capture real market dynamics accurately. This research
+aimed to determine whether a deep learning model trained with minimal resources can predict option prices more
+accurately than the Black-Scholes model.</p>
+<h2 id="data-collection-and-processing">Data Collection and Processing</h2>
+<p>To achieve this, historical Petrobras option data was collected from B3, the Brazilian stock exchange, along with stock
+prices and interest rates. Due to the lack of publicly available, consolidated data sources, a combination of web scraping,
+direct HTTP requests, and automated data processing techniques was employed to compile a comprehensive dataset
+spanning from November 2016 to January 2025.</p>
+<h2 id="methodology">Methodology</h2>
+<p>A deep neural network was designed, inspired by residual network architectures commonly used in computer vision. The
+model was trained using a custom hybrid loss function that dynamically weights empirical market data and theoretical
+Black-Scholes prices. Hyperparameter tuning was performed using Optuna, leading to an optimized architecture that
+included batch normalization, dropout layers, and LeakyReLU activations.</p>
+<p>Loss Function:</p>
+<p style="text-align: center;">
+  <a href="/images/projects/project-two/loss_function.png">
+    <img src="/images/projects/project-two/loss_function.png" alt="Black-Scholes" style="width: 1000px; border-radius: 8px;">
+  </a>
+</p>
+<!--more-->
+<p>Architecture:</p>
+<p style="text-align: center;">
+  <a href="/images/projects/project-two/architecture.png">
+    <img src="/images/projects/project-two/architecture.png" alt="Black-Scholes" style="width: 1000px; border-radius: 8px;">
+  </a>
+</p>
+<!--more-->
+<h2 id="results">Results</h2>
+<p>The model’s performance was evaluated using mean absolute error (MAE) across different price ranges and expiration
+periods. Results show that the deep learning model consistently outperforms Black-Scholes in predicting option prices
+within the 3-19 BRL range, achieving a 64.3% reduction in MAE for 43.41% of all Petrobras option transactions on B3.
+Additionally, the model successfully identified cases where the Black-Scholes model significantly undervalued options,
+such as PETRL36, PETRL410, PETRD397, and PETR409.</p>
+<p>Mean Absolute Error across different price ranges and expiration periods:</p>
+<p style="text-align: center;">
+  <a href="/images/projects/project-two/MAE_cat.png">
+    <img src="/images/projects/project-two/MAE_cat.png" alt="MAE_cat" style="width: 800px; border-radius: 8px;">
+  </a>
+</p>
+<!--more-->
+Mean Absolute Error for the [3,19] BRL interval:
+<p style="text-align: center;">
+  <a href="/images/projects/project-two/MAE.png">
+    <img src="/images/projects/project-two/MAE.png" alt="MAE" style="width: 500px; border-radius: 8px;">
+  </a>
+</p>
+<!--more-->
+Daily Average Premium:
+<p style="text-align: center;">
+  <a href="/images/projects/project-two/daily_avg_premium.png">
+    <img src="/images/projects/project-two/daily_avg_premium.png" alt="Daily average" style="width: 1000px; border-radius: 8px;">
+  </a>
+</p>
+<!--more-->
+<h2 id="takeaway">Takeaway</h2>
+<p>Despite its success in specific price ranges, the neural network exhibited limitations in predicting prices outside the 3-19
+BRL range, tending to overestimate prices in these cases. Additionally, while the model showed improved accuracy
+for longer expiration periods—contrary to conventional financial expectations—its generalization to extreme pricing
+scenarios remains an open challenge. Furthermore, signs of overfitting were observed which restricted us to run only
+up to 25 epochs. This will be addressed in future work as we attempt to increase the predicted call price accuracy by
+employing more robust models.</p>
+                </div>
+                
+            
+        </article>
+    </main>
+
+        </div><footer>
+    <span></span>
+</footer>
+</body>
+</html>
